@@ -45,17 +45,4 @@ class Module extends \Venne\Developer\Module\AutoModule {
 	}
 
 
-	public function setServices(\Venne\Application\Container $container)
-	{
-		parent::setServices($container);
-		$container->services->addService("empty", new Service("empty", $container->doctrineContainer->entityManager, $container->hookManager));
-	}
-
-
-	public function setHooks(\Venne\Application\Container $container, \App\HookModule\Manager $manager)
-	{
-		parent::setHooks($container, $manager);
-		$manager->addHook("admin\\menu", \callback($container->services->empty, "hookAdminMenu"));
-	}
-
 }
